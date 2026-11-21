@@ -2,10 +2,10 @@ from django.db import models as django_models
 
 
 class Resume(django_models.Model):
-    candidate = django_models.OneToOneField(
+    candidate = django_models.ForeignKey(
         "Candidate",
         on_delete=django_models.CASCADE,
-        related_name="resume"
+        related_name="resumes"
     )
     file = django_models.FileField(upload_to="resumes/")
     uploaded_at = django_models.DateTimeField(auto_now_add=True)

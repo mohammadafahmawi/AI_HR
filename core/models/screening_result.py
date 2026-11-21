@@ -1,4 +1,5 @@
 from django.db import models as django_models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class ScreeningResult(django_models.Model):
@@ -17,7 +18,9 @@ class ScreeningResult(django_models.Model):
         on_delete=django_models.CASCADE,
         related_name="screening_results"
     )
-    score = django_models.PositiveIntegerField()
+    score = django_models.PositiveIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
     strengths = django_models.JSONField(default=list)
     missing_skills = django_models.JSONField(default=list)
     recommendation = django_models.CharField(
