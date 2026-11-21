@@ -7,5 +7,7 @@ class InterviewQuestionSetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = InterviewQuestionSet
-        fields = ["id","job_position","job_position_title","questions","created_at",
+        fields = [
+            "id","candidate","job_position","job_position_title","screening_result", "technical_questions","behavioral_questions","follow_up_questions","generated_at",
         ]
+        read_only_fields = fields
